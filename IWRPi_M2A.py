@@ -19,7 +19,7 @@ PORT = 80 # have to use 'sudo python3 xxx.py' to use port 80
 
 #create socket with arguments AF_INET (Address Family Internet) and SOCK_STREAM (TCP)
 try:
-	ms = socket.socket(socket.AF_INET, socket.SOCK_STREAM) 
+	soc = socket.socket(socket.AF_INET, socket.SOCK_STREAM) 
 except socket.error: # generic socket exception/error
 	print("Failed to create socket.")
 	sys.exit()
