@@ -36,14 +36,14 @@ soc.listen(5)
 
 while True:
 	conn, addr = soc.accept() # accepts connection request from client
-	data = conn.recv(1000) # receives up to 1000 bytes of data
-	if not data: #if no more data is being sent
-		break
 	print('Got connection from', addr) # prints the address of the client
 	conn.sendall(b'Got a request!') # sends byte message to client to view in web browser
+	conn.close()
+	break
 
-conn.close()
 soc.close()
+
+
 
 # once you type in RPi IP into browser, computer will try to open connection 
 # to other machine and send an HTTP request on Port 80
