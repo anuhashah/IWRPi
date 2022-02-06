@@ -36,7 +36,7 @@ soc.listen(5)
 
 while True:
 	conn, addr = soc.accept() # accepts connection request from client
-	print 'Got connection from', addr # prints the
+	print('Got connection from', addr) # prints the address of the client
 	conn.sendall('Got a request!')
 	conn.close()
 # data = soc.recv(1000)
