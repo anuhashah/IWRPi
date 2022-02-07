@@ -8,15 +8,10 @@
 # response to return the contents of the webpage.
 
 import http.client
-import requests
 
-url = "https://www.uci.edu/"
-resp = requests.get(url)
-
-conn = http.client.HTTPConnection(resp) # performs DNS Lookup and establishes connection
+conn = http.client.HTTPSConnection("www.uci.edu") # performs DNS Lookup and establishes connection
 conn.request("GET", "/") # sends request w/ key details and composes message and sends
 response = conn.getresponse() # gets response 
-print(response.status, response.reason) # Status code and reason phrase returned by server 
-print(response.getheader('Location'))
-data = response.read()
-print(data)
+print(response.status, response.reason) # Status code and reason phrase returned by server --> want 200 OK
+data = response.readlines() # reads content and stores data by line
+print(data[0:3]) # prints first 3 lines in list
