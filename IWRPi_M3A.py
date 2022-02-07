@@ -8,8 +8,9 @@
 # response to return the contents of the webpage.
 
 import http.client
-conn = http.client.HTTPConnection("www.uci.edu") # performs DNS Lookup and establishes connection
+conn = http.client.HTTPConnection("https://uci.edu") # performs DNS Lookup and establishes connection
 conn.request("GET", "/") # sends request w/ key details and composes message and sends
 response = conn.getresponse() # gets response 
-print(response.status, response.reason)
+print(response.status, response.reason) # Status code and reason phrase returned by server 
 data = response.read()
+print(data)
