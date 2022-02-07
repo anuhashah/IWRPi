@@ -7,11 +7,16 @@
 # Then use conn.getresponse() to extract the response and use the read() method of the 
 # response to return the contents of the webpage.
 
-import httplib # http.client library cannot handle redirects which results in 302 Found error
+import http.client
+import requests
 
-conn = httplib.HTTPConnection("https://uci.edu/") # performs DNS Lookup and establishes connection
+url = "https://www.uci.edu/"
+resp = requests.get(url)
+
+conn = http.client.HTTPConnection(resp) # performs DNS Lookup and establishes connection
 conn.request("GET", "/") # sends request w/ key details and composes message and sends
 response = conn.getresponse() # gets response 
 print(response.status, response.reason) # Status code and reason phrase returned by server 
-# data = response.read()
-# print(data)
+print(response.getheader('Location'))
+data = response.read()
+print(data)
