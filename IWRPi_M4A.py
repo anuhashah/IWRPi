@@ -20,7 +20,7 @@ for i in range(101): # Loop from 0 to 100 (low to high)
 	time.sleep(0.01) # Wait for 0.01 seconds at current LED brightness, so that it takes approx. 1 second to go from min to max brightness
 
 for i in range(101, 0, -1): # Loop from 100 to 0 (decrements by 1)
-	pwm.ChangeDutyCyle(i)
+	pwm.ChangeDutyCycle(i)
 	time.sleep(0.01) # Approx. 1 second to go from max to min brightness
 
 pwm.stop() # Stop PWM
