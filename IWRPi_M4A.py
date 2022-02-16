@@ -7,6 +7,8 @@
 
 # Link to demo video: 
 
+# R > (3.3-1.8/0.02) = 75 --> 3.3 is high voltage of pin set as output, 1.8 is voltage drop across LED, and 0.02 is the maximum current of the led
+
 import RPi.GPIO as GPIO # Import GPIO library so you can manipulate general purpose pins
 import time # Import time library to use sleep function
 
@@ -15,11 +17,11 @@ GPIO.setup(12, GPIO.OUT) # Set pin 12 on BOARD as output
 pwm = GPIO.PWM(12, 50) # Initialize PWM on pwmPin (12) at 50 kHz frequency 
 pwm.start(0) # Start PWM with 0% duty cycle (low)
 
-for i in range(0, 100, 1): # Loop from 0 to 99 (low to high) --> setting 100 throws ValueError: dutycyle must have value from 0.0 to 100.0
+for i in range(0, 101, 1): # Loop from 0 to 99 (low to high) --> setting 100 throws ValueError: dutycyle must have value from 0.0 to 100.0
 	pwm.ChangeDutyCycle(i)
 	time.sleep(0.1) # Wait for 0.01 seconds at current LED brightness, so that it takes approx. 1 second to go from min to max brightness
 
-for i in range(100, 0, -1): # Loop from 99 to 0 (decrements by 1)
+for i in range(101, 0, -1): # Loop from 99 to 0 (decrements by 1)
 	pwm.ChangeDutyCycle(i)
 	time.sleep(0.1) # Approx. 1 second to go from max to min brightness
 
