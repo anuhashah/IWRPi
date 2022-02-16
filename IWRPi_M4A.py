@@ -18,11 +18,11 @@ GPIO.setup(12, GPIO.OUT) # Set pin 18 (GPIO18) on BOARD as output
 pwm = GPIO.PWM(12, 100) # Initialize PWM on pwmPin (pin 12 and GPIO 18) at 50 kHz frequency 
 pwm.start(0) # Start PWM with 0% duty cycle (low)
 
-for i in range(101): # Loop from 0 to 99 (low to high) --> setting 100 throws ValueError: dutycyle must have value from 0.0 to 100.0
+for i in range(100): # Loop from 0 to 99 (low to high) --> setting 100 throws ValueError: dutycyle must have value from 0.0 to 100.0
 	pwm.ChangeDutyCycle(i)
 	time.sleep(0.01) # Wait for 0.01 seconds at current LED brightness, so that it takes approx. 1 second to go from min to max brightness
 
-for i in range(101, 0, -1): # Loop from 99 to 0 (decrements by 1)
+for i in range(100, 0, -1): # Loop from 99 to 0 (decrements by 1)
 	pwm.ChangeDutyCycle(i)
 	time.sleep(0.01) # Approx. 1 second to go from max to min brightness
 
